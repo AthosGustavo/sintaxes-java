@@ -68,12 +68,65 @@
 
   <details>
   <summary>Métodos String</summary>
-  - equals
-  - length
-  - substring
-  - concat
-  - contains
-  - replace
+   
+   ## Métodos String
+   
+   ### length
+   - Usado para retornar o tamanho de uma string ou array
+   ```java
+   String originalString = "Olá, Mundo!";
+        
+   int comprimento = originalString.length();
+   System.out.println("Comprimento da string: " + comprimento);
+   ```
+    
+  ### substring
+  - Usada para extrair uma parte de uma string
+  - Ex: substring(int beginIndex, int endIndex)
+
+  ```java
+  String originalString = "Olá, Mundo!";
+
+  String substring = originalString.substring(0, 5);
+  System.out.println("Substring: " + substring);
+  
+  ```
+  ### concat
+  - Usado para unir uma String a outra
+  
+  ```java
+  String originalString = "Olá, Mundo!";
+
+  String outraString = " Isso é um exemplo.";
+  String concatenada = originalString.concat(outraString);
+  System.out.println("String concatenada: " + concatenada);
+  
+  ```
+    
+  ### contains
+  - Usado para verificar se uma string comtém uma determinada sequência
+
+  ```java
+  String frase = "Java é uma linguagem de programação poderosa.";
+
+  // Verificando se a string contém uma sequência específica
+  String sequencia = "linguagem";
+
+  if (frase.contains(sequencia)) {
+    System.out.println("A string contém a sequência: " + sequencia);
+  } else {
+    System.out.println("A string NÃO contém a sequência: " + sequencia);
+  }
+  ```
+  ### replace
+  - Usado para substituir caracteres em uma String
+  - replace(oldChar, newChar);
+  ```java
+  String originalString = "Olá, Mundo!";
+
+  String substituida = originalString.replace('o', 'X');
+  System.out.println("String com substituição: " + substituida);
+  ```
  
  </details> 
 </details>
