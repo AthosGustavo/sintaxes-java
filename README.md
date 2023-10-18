@@ -40,7 +40,31 @@
     }
    ```
 
-  ### Comparando Strings com toEquals()
+  ### Comparando Strings com equals()
+   - equals compara os valores associados as variáveis
+
+   ```java
+    String nomeInstancia = new String("athos");
+    String nomeInstanciaDois = new String("athos");
+        
+    if(nomeInstancia.equals(nomeInstanciaDois)){
+    System.out.println("nomeInstancia == nomeInstanciaDois"); // São iguais
+    }else{
+      System.out.println("Não são iguais");  //nao sao iguais
+    }
+   ```
+
+  ## Imutabilidade das Strings
+   - As Strings são imutáveis, existe uma diferença entre reescrever o valor de uma String e mutar esse valor.Para reescrever basta literamente apagar o valor da String e colocar outro,por sua vez, a mutação é diferente.
+
+  ### Mutação de String
+   - Em um exemplo como esse asseguir não modificará o valor da variável nome, será necessário atribuir a mutação a outra variável e o valor antigo ainda continuará existindo.
+
+  ```java
+  String nome = "athos";
+  String nomeAlterado = nome.toUpperCase();
+  System.out.println(nomeAlterado);
+  ```
 
   <details>
   <summary>Métodos String</summary>
