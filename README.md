@@ -45,7 +45,36 @@
     }
 }
    ```
-     
+
+  ## toString
+  - Usado para retornar uma representação String de um objeto e seus atributos
+  - O método não vem com essa funcionalidade por padrão e é necessário sobrescrever para ser possível utiliza-ló de uma forma alternativa.
+  - O método não imprime,apenas faz a formatação de saída.
+  ```C#
+  package Exercicios;
+
+  public class App4 {
+    public String nome;
+    public int idade;
+
+    @Override
+    public String toString() {
+        return "App4{" +
+                "nome='" + nome + '\'' +
+                ", idade=" + idade +
+                '}';
+    }
+
+    public static void main(String[] args) {
+        App4 pessoa = new App4();
+        pessoa.nome="Athos";
+        pessoa.idade=22;
+        System.out.println(pessoa.toString());
+
+    }
+}
+
+  ```
   
   </details>
  </details>
