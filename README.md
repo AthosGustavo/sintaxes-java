@@ -1,6 +1,54 @@
 # sintaxes-java
 
+ <details>
+  <summary>java.lang</summary>
+  <details>
+   <summary>Classe Object</summary>
+   
+   ## Classe Object
+   - É a superclasse de todas as classes em java e é definida no pacote java.lang.Isso significa que todas as  classes em java herdam a classe Object.
 
+   ### Métodos importantes da classe
+   #### equals
+   - Este método é usado para comparar se dois objetos são iguais em termos de conteúdo.
+   - Por padrão, a comparação desse método é a referência da memória e para comparar o conteúdo, é necessário sobrescrever o método.
+   - o método equals não pode ser usado diretamente com tipos primitivos em Java, pois ele é um método de objetos e tipos primitivos não são objetos.
+   ```C#
+    package Exercicios;
+
+    import java.util.Objects;
+
+    public class App3 {
+    private String a;
+    private String b;
+
+    public void compare(String a, String b) {
+        if(a.equals(b)){
+            System.out.println("a é igual a b");
+        }else{
+            System.out.println("a não é igual a b");
+        }
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        App3 app3 = (App3) o;
+        return a == app3.a && b == app3.b;
+    }
+
+    public static void main(String[] args) {
+        App3 teste = new App3();
+        teste.compare("bom dia","bom dia");
+    }
+}
+   ```
+     
+  
+  </details>
+ </details>
  <details>
   <summary>Classe String</summary>
   
