@@ -266,7 +266,30 @@ int[] numeros = {1, 2, 3, 4};
  </details>
 </details>
 
+<details>
+ <summary>CAST</summary>
+ 
+ ## Cast
+ - O cast se baseia na conversão de um tipo de variável para o outro.
 
+ ### cast implícito
+ 
+ ```C#
+ int numero = 3;
+ double valor = numero;
+ ```
+ - Colocamos um valor da variável número (tipo int) na variável valor (tipo double) sem usar um cast explícito.Isso funciona,pois qualquer inteiro cabe dentro de um double, por esse motivo o compilador não exibe erro.
+ ```C#
+ double numeroDouble = 4.75;
+ int numeroInt = (int) numeroDouble;
+ ```
+ - Nesse caso, é necessário fazer um cast explícito, pois um double não cabe um int.
+
+
+
+
+ 
+</details>
 
 
 
