@@ -291,7 +291,59 @@ int[] numeros = {1, 2, 3, 4};
  
 </details>
 
+<details>
+ <summary>HttpClient</summary>
+ 
+ ## Explicando as principais classes do HttpClient de uma forma simplificada.
 
+ ### HttpClient
+ - Responsável por abrir e enviar a solicitação.
+
+ ### HttpRequest
+ - Responsável por preparar os detalhes da solicitação, incluindo os métodos HTTP.
+ - Define como a solicitação será formatada antes de seer enviada.
+
+ ### HttpResponse
+ - Responsável por receber a resposta da requisição
+ - Contém informações sobre o código de status da resposta, os cabeçalhos da resposta e o corpo da resposta.
+ - Permite  acessar e processar o conteúdo da resposta, como texto, JSON ou outros.
+
+ ```java
+ import java.net.URI;
+ import java.net.http.HttpClient;
+ import java.net.http.HttpRequest;
+ import java.net.http.HttpResponse;
+ import java.io.IOException;
+ import java.net.http.HttpHeaders;
+
+ public class Main {
+     public static void main(String[] args) throws IOException, InterruptedException {
+
+         String regiao = "Brasil";
+         // HttpClient é uma classe abstrata e newHttpClient() é um método estático
+         HttpClient httpClient = HttpClient.newHttpClient();
+
+         String chaveApi = "8d477a13299a1dc90901fac477cc83d3";
+         String apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + regiao + "&appid=" + chaveApi;
+
+         HttpRequest requisicao = HttpRequest.newBuilder()
+             .uri(URI.create(apiUrl))
+             .build();
+
+         HttpResponse<String> resposta = httpClient.send(requisicao, HttpResponse.BodyHandlers.ofString());
+
+         int statusCode = resposta.statusCode();
+         String responseBody = resposta.body();
+
+         System.out.println("Código de status: " + statusCode);
+         System.out.println("Resposta do servidor:");
+         System.out.println(responseBody);
+     }
+  }
+
+ ```
+
+</details>
 
 
 
