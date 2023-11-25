@@ -1,5 +1,39 @@
 # sintaxes-java
+ <details>
+  <summary>OO</summary>
+  
+  ### Invocando o contrutor da classe pai
 
+ - Em algumas situações é necessário reaproveitar um construtor já declarado em uma classe pai e para explicar como reaproveitar irei demonstrar um situação.
+ 
+ - Temos a classe abstrata Brasileiro que possui seus atributos como final e também tem seu método construtor.A partir da classe Brasileiro, podemos construit outras classes como Pernambucano,Carioca e Amazonense,no entanto os atributos de Brasileiro são finais e só podem ter valores atribuidos no momento de sua declaração.Sendo assim, uma forma de poder modificar o valor desses atributos em outras classes é reaproveitando o método construtor da classe pai.Para fazer isso, basta chamar o método construto da classe matriz com o ´super´, os valores serão recebidos por meio dos parâmetros do método construtor da classe filha.
+
+```java
+public abstract Brasileiro{
+
+  private final String nome;
+  private final String cpf;
+  private final String rg;
+  
+  public Brasileiro(String nome, String cpf, String rg){
+    this.nome = nome;
+    this.cpf = cpf;
+    this.rg = rg;
+  }
+}
+```
+```java
+public class Pernambucano extends Brasileiro{
+
+  public Pernambucano(String nome, String cpf, String rg){
+    super(nome, cpf, rg);
+  }
+}
+```
+  
+
+  
+ </details>
  <details>
   <summary>java.lang</summary>
   <details>
