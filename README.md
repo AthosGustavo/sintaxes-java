@@ -388,7 +388,7 @@ int[] numeros = {1, 2, 3, 4};
  - Métodos simples e curtos que não são reutilizados e precisam ser flexíveis para serem usados em diferentes cenários.
 
  ## Situações onde não é indicado o uso de uma classe anônima
- - Quando a implementação precisa ser reutilizada
+ - `Quando a implementação precisa ser reutilizada`
  - `Quando a implementação é complexa:` Se a implementação do método é complexa e contém muitas linhas de código, pode ser melhor criar uma classe separada.
 
  *EXEMPLO USANDO CLASSE ANÔNIMA*
