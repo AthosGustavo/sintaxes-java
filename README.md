@@ -378,7 +378,66 @@ int[] numeros = {1, 2, 3, 4};
  ```
 
 </details>
+<details>
+ <summary>Classe anônima</summary>
 
+ # Classe anônima
+ - A classe anônima pode ser usada para obter métodos implementados em uma interface pelo motivo de desacoplamento de um método a partir de uma classe.Ao invés de implementar o método na classe, o método é implementado em uma interface.
+
+ ## Situações onde é indicado o uso de uma classe anônima
+ - Métodos simples e curtos que não são reutilizados e precisam ser flexíveis para serem usados em diferentes cenários.
+
+ ## Situações onde não é indicado o uso de uma classe anônima
+ - Quando a implementação precisa ser reutilizada
+ - `Quando a implementação é complexa:` Se a implementação do método é complexa e contém muitas linhas de código, pode ser melhor criar uma classe separada.
+
+ *EXEMPLO USANDO CLASSE ANÔNIMA*
+ ```java
+ public interface CalculosMontagemCarro{
+  public void calculosMontagemCarro();
+ }
+
+public class CarroCustoMontagem{
+
+  public void carroValorTotal(CalculosMontagemCarro calculosMontagemCarro){
+    //régra de negócio
+   }
+ }
+
+ CarroCustoMontagem carroCustoMontagem = new CarroCustoMontagem();
+
+ carroCustoMontagem.carroValorTotal(new CalculosMontagemCarro(){
+
+   @Override
+   public void calculosMontagemCarro(){
+     //régra de negócio
+   }
+  
+ });
+ ```
+ *SEM USAR CLASSE ANÔNIMA*
+ ```java
+  public class CarroCustoMontagem{
+
+   public void carroValorTotal(CalculosMontagemCarro calculosMontagemCarro){
+     //régra de negócio
+   }
+  }
+
+  public class CalculosMontagemCarroImpl implements CalculosMontagemCarro {
+   @Override
+   public void calculosMontagemCarro(){
+     //régra de negócio
+   }
+  }
+
+  CarroCustoMontagem carroCustoMontagem = new CarroCustoMontagem();
+  CalculosMontagemCarro calculosMontagemCarro = new CalculosMontagemCarroImpl();
+
+  carroCustoMontagem.carroValorTotal(calculosMontagemCarro);
+ ```
+   
+</details>
 
 
 
