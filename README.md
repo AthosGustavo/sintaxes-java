@@ -30,7 +30,10 @@ public class Pernambucano extends Brasileiro{
   }
 }
 ```
-  
+### Visibilidade dos métodos
+
+ - Métodos privados são necessários em situações em que parte da lógica de um processo tem um carater mais sigiloso a regra de negócio.
+ - `Exemplo`: Temos as classes `Produto` e `Fatura`, a classe Fatura possui o objetivo de calcular os descontos e impostos de uma lista de produtos.Dentro da Fatura, existe o método `calcularTotalAPagar` e esse método chama os métodos privados que `possuem as fórmulas para calcular o Desconto e os impostos`.Dessa forma, o único caminho para chamar os métodos privados é de forma indireta e por meio de um método público.
 
   
  </details>
