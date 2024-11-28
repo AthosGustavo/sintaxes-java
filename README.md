@@ -441,6 +441,37 @@ public class CarroCustoMontagem{
  ```
    
 </details>
+<details>
+ <summary>Optional</summary>
 
+ # Optional
+
+ ## Optional.ofNullable
+ Usado para lidar com possíveis valores nulos de forma segura
+ <hr/>
+ 
+ *EXEMPLO 1º: REALIZANDO UMA AÇÃO COM BASE EM UM VALOR NÃO NULO*
+ 
+ ```java
+  String nome = "Maria";
+  Optional<String> optionalNome = Optional.ofNullable(nome);
+  optionalNome.ifPresent(valor -> System.out.println("Nome: " + valor));
+ ```
+ *EXEMPLO 2º*: PRÉ DEFININDO VALOR EM CASO DE NULIDADE
+  - Se nome for nulo, nomeFinal receberá "SEM NOME". Caso contrário, nomeFinal receberá o valor da variável nome
+ 
+ ```java
+ String nome = "Carlos"; // Nome diferente de null
+ Optional<String> optionalNome = Optional.ofNullable(nome);
+
+ String nomeFinal = optionalNome.orElse("SEM NOME");
+ System.out.println("Nome final: " + nomeFinal);
+
+ ```
+ 
+ *EXEMPLO 3º: PRÉ DEFININDO UM VALOR DINÂMICO ATRAVÉS DE UMA FUNÇÃO EM CASO DE NULIDADE*
+  - Diferente 
+  
+</details>
 
 
