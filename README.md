@@ -470,7 +470,19 @@ public class CarroCustoMontagem{
  ```
  
  *EXEMPLO 3º: PRÉ DEFININDO UM VALOR DINÂMICO ATRAVÉS DE UMA FUNÇÃO EM CASO DE NULIDADE*
-  - Diferente 
+  ```java
+  optional.orElseGet(() -> funcao())
+  ```
+  
+  ### Diferenças entre orElse e orElseGet
+  
+  #### orElse
+  - O valor alternativo é sempre avaliado, mesmo que não seja necessário. Se o Optional contém um valor, ele será retornado, mas o valor alternativo já foi processado.
+  - Útil para valores prontos ou simples.
+
+  #### orElseGet:
+  - O valor alternativo é avaliado somente se o Optional estiver vazio.
+  - Ideal para valores que demandam processamento ou operações caras.
   
 </details>
 
