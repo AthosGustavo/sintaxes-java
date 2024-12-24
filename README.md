@@ -485,5 +485,140 @@ public class CarroCustoMontagem{
   - Ideal para valores que demandam processamento ou operações caras.
   
 </details>
+<details>
+ <summary>Designe Pattens</summary>
 
+ <details>
+  <summary>Chains Of Responsability</summary>
+  
+  # Chains Of Responsability
+  - O Designer pode ser interpretado como uma corrente de objetos onde cada
+objeto vai possuir um algorítmo em particular e uma referência para o próximo nó
+da corrente.
+  - Como todos os nó irão ter em comum a referência para o próximo objeto
+e um método onde a lógica será executada, deve ser usada uma classe abstrata para garantir o padrão e a abstração.
+  - No fluxo de execução, com base em uma condição interna ao objeto, o seu algoritmo em
+particular pode ser executado ou o próximo nó pode ser chamado.
+
+![chains-of-responsability drawio](https://github.com/user-attachments/assets/7af7061a-bb25-4995-af67-25632f5556a4)
+
+```java
+package com.carteira.performance.Model;
+
+import java.util.List;
+
+public abstract class Regra {
+	
+	protected Regra proxima;
+	
+	public Regra(Regra regra) {
+		this.proxima = regra;
+	}
+	
+	public abstract Boolean validar(CarteiraImovel carteiraImovel, List<Integer> listaRegrasDaCarteira);
+}
+
+```
+```java
+package com.carteira.performance.Model;
+
+import java.util.List;
+
+public class ImovelInseridoAposBaseline extends Regra{
+	public ImovelInseridoAposBaseline(Regra regra) {
+		super(regra);
+		// TODO Auto-generated constructor stub
+	}
+
+
+	@Override
+	public Boolean validar(CarteiraImovel carteiraImovel, List<Integer> listaRegrasDaCarteira) {
+		if(listaRegrasDaCarteira.contains(EnumRegras.REGRA_PROIBIDO_INSERIR_IMOVEL_CADASTRADO_APOS_BASELINE.getRegra())) {
+			System.out.println("Validando regra ImovelInseridoAposBaseline....Imovel inválido");
+			return false;
+		}else {
+			System.out.println("Próxima regra");
+			return super.proxima.validar(carteiraImovel, listaRegrasDaCarteira);
+		}
+		
+	}
+}
+
+package com.carteira.performance.Model;
+
+import java.util.List;
+
+public class ImovelRemovidoPorfaltaAtuacao extends Regra{
+
+	public ImovelRemovidoPorfaltaAtuacao(Regra regra) {
+		super(regra);
+	}
+	
+	@Override
+	public Boolean validar(CarteiraImovel carteiraImovel, List<Integer> listaRegrasDaCarteira) {
+		if(listaRegrasDaCarteira.contains(EnumRegras.REGRA_PROIBIDO_INSERIR_IMOVEL_REMOVIDO_FALTA_ATUACAO.getRegra())) {
+			System.out.println("Validando regra ImovelRemovidoPorfaltaAtuacao....Imovel inválido");
+			return false;
+		}else {
+			System.out.println("Próxima regra");
+			return super.proxima.validar(carteiraImovel, listaRegrasDaCarteira);
+		}
+		
+	}
+
+	
+	
+}
+
+package com.carteira.performance.Model;
+
+import java.util.List;
+
+public class ImovelCategoriaNaoPermitida extends Regra {
+
+	public ImovelCategoriaNaoPermitida(Regra regra) {
+		super(regra);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public Boolean validar(CarteiraImovel carteiraImovel, List<Integer> listaRegrasDaCarteira) {
+		if(listaRegrasDaCarteira.contains(EnumRegras.REGRA_PROIBIDO_INSERIR_IMOVEL_CATEGORIA_PUBLICA.getRegra())) {
+			System.out.println("Validando regra ImovelCategoriaNaoPermitida....Imovel inválido");
+			return false;
+		}else {
+			System.out.println("Próxima regra");
+			return super.proxima.validar(carteiraImovel, listaRegrasDaCarteira);
+		}
+		
+	}
+
+}
+
+```
+```java
+package com.carteira.performance.Model;
+
+import java.util.List;
+
+public class ImovelValido extends Regra {
+
+	public ImovelValido() {
+		super(null);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public Boolean validar(CarteiraImovel carteiraImovel, List<Integer> listaRegrasDaCarteira) {
+		return true;
+	}
+
+}
+ 
+
+```
+  
+ </details>
+
+</details>
 
