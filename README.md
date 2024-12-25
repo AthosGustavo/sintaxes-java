@@ -499,8 +499,41 @@ da corrente.
 e um método onde a lógica será executada, deve ser usada uma classe abstrata para garantir o padrão e a abstração.
   - No fluxo de execução, com base em uma condição interna ao objeto, o seu algoritmo em
 particular pode ser executado ou o próximo nó pode ser chamado.
+  - Como a corrente deve ter um fim, o último nó pode ser um objeto que executa um método padrão ou retorna um valor booleano.
 
 ![chains-of-responsability drawio](https://github.com/user-attachments/assets/7af7061a-bb25-4995-af67-25632f5556a4)
+
+
+## Implementação sem o padrão
+```java
+public Boolean validarRegrasParaInserirCarteiraImovel(CarteiraImovel carteiraImovel,List<Integer> listaRegrasDaCarteira) {		
+	this.listaRegrasDaCarteira = carregarRegrasFiltradasTipo(FiltroCarteiraRegra.REGRA_TIPO_INSERCAO);
+
+	if (listaRegrasDaCarteira.contains(EnumRegras.REGRA_PROIBIDO_INSERIR_IMOVEL_REMOVIDO_FALTA_ATUACAO.getRegra())) {
+		if (imovelRemovidoPorfaltaAtuacao(carteiraImovel)) {
+			return Boolean.FALSE;
+		}
+
+		carteiraImovel.getIndicadorPossivelRecuperar();
+	}
+
+	if (listaRegrasDaCarteira.contains(EnumRegras.REGRA_PROIBIDO_INSERIR_IMOVEL_CATEGORIA_PUBLICA.getRegra())) {
+		if (imovelCategoriaNaoPermitida(carteiraImovel)) {
+			return Boolean.FALSE;
+		}
+	}
+
+	if (listaRegrasDaCarteira.contains(EnumRegras.REGRA_PROIBIDO_INSERIR_IMOVEL_CADASTRADO_APOS_BASELINE.getRegra())) {
+		if (imovelInseridoAposBaseline(carteiraImovel)) {
+			return Boolean.FALSE;
+		}
+	}
+
+	return Boolean.TRUE;		 			
+}
+```
+
+## Implementação com o padrão
 
 ```java
 package com.carteira.performance.Model;
