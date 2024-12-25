@@ -652,6 +652,118 @@ public class ImovelValido extends Regra {
 ```
   
  </details>
+ <details>
+  <summary>Strategy</summary>
+ 
+  # Strategy
+   - O padrão Strategy tem o objetivo de fornecer várias formas de aplicar uma lógica para um valor de tipo invariável recebido por um método.
+   - Diferente do padrão Chains Of Responsability, o objetivo não é percorrer todas as situações,apenas executar uma lógica específica com base no valor recebido.
+   - Os métodos possuem em comum o tipo do valor que recebem e o retorno,sendo apenas incomum a lógica que executam.Dessa forma, para garantir a abstração,cada método deve virar uma classe que implementará uma interface e nessa interface será declarado a assinatura do método responsável por executar a lógica.
+   - Já que todas as classes serão do tipo da interface, a classe/método que chama o Strategy não precisa conhecer a classe concreta e muito menos a lógica que ela executa.
+
+   ![image](https://github.com/user-attachments/assets/97ef6e9d-d66e-49d0-a8e4-65b023ad05b4)
+
+   ```java
+   public class ICMS implements Imposto{
+
+	@Override
+	public BigDecimal calcular(Orcamento orcamento) {
+		// TODO Auto-generated method stub
+		return  orcamento.getValor().multiply(new BigDecimal(0.3));
+	}
+
+   }
+
+   ```
+
+   ```java
+
+   public class IOF implements Imposto{
+
+	@Override
+	public BigDecimal calcular(Orcamento orcamento) {
+		// TODO Auto-generated method stub
+		return  orcamento.getValor().multiply(new BigDecimal(0.1));
+	}
+
+   }
+
+   ```
+   ```java
+    public class ISS implements Imposto{
+
+	@Override
+	public BigDecimal calcular(Orcamento orcamento) {
+		// TODO Auto-generated method stub
+		return  orcamento.getValor().multiply(new BigDecimal(0.2));
+	}
+
+    }
+   ```
+   ```java
+   public interface Imposto {
+	public BigDecimal calcular(Orcamento orcamento);
+   }
+   ```
+   ```java
+   public class Orcamento {
+	
+	private BigDecimal valor;
+	private int qtdItens;
+	
+	public Orcamento(BigDecimal valor) {
+		this.setValor(valor);
+	}
+
+	public Orcamento(BigDecimal valor, int qtdItens) {
+		this.valor = valor;
+		this.qtdItens = qtdItens;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
+	public int getQtdItens() {
+		return qtdItens;
+	}
+
+	public void setQtdItens(int qtdItens) {
+		this.qtdItens = qtdItens;
+	}
+	
+	
+	
+   }
+
+   ```
+   ```java
+   public class Main {
+	
+   	public static void main(String[] args) {
+		
+	// Nesse exemplo, apenas um imposto deve ser aplicado.
+		
+		Orcamento orcamento = new Orcamento(BigDecimal.valueOf(50));		
+		Integer inputUsuario = 2;
+		
+		Map<Integer, Imposto> impostos = new HashMap<>();
+		impostos.put(1, new ICMS());
+		impostos.put(2, new ISS());
+		impostos.put(3, new IOF());
+		
+		System.out.println(CalculadoraOrcamento.calcular(orcamento, impostos.get(inputUsuario)));
+		
+	}
+   }
+   ```
+ 
+ </details>
+
 
 </details>
 
