@@ -571,6 +571,8 @@ public class ImovelInseridoAposBaseline extends Regra{
 	}
 }
 
+```
+```java
 public class ImovelRemovidoPorfaltaAtuacao extends Regra{
 
 	public ImovelRemovidoPorfaltaAtuacao(Regra regra) {
@@ -593,6 +595,10 @@ public class ImovelRemovidoPorfaltaAtuacao extends Regra{
 	
 }
 
+```
+
+
+```java
 public class ImovelCategoriaNaoPermitida extends Regra {
 
 	public ImovelCategoriaNaoPermitida(Regra regra) {
@@ -613,7 +619,6 @@ public class ImovelCategoriaNaoPermitida extends Regra {
 	}
 
 }
-
 ```
 ```java
 
