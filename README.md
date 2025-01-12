@@ -536,9 +536,6 @@ public Boolean validarRegrasParaInserirCarteiraImovel(CarteiraImovel carteiraImo
 ## Implementação com o padrão
 
 ```java
-package com.carteira.performance.Model;
-
-import java.util.List;
 
 public abstract class Regra {
 	
@@ -553,9 +550,6 @@ public abstract class Regra {
 
 ```
 ```java
-package com.carteira.performance.Model;
-
-import java.util.List;
 
 public class ImovelInseridoAposBaseline extends Regra{
 	public ImovelInseridoAposBaseline(Regra regra) {
@@ -576,10 +570,6 @@ public class ImovelInseridoAposBaseline extends Regra{
 		
 	}
 }
-
-package com.carteira.performance.Model;
-
-import java.util.List;
 
 public class ImovelRemovidoPorfaltaAtuacao extends Regra{
 
@@ -602,10 +592,6 @@ public class ImovelRemovidoPorfaltaAtuacao extends Regra{
 	
 	
 }
-
-package com.carteira.performance.Model;
-
-import java.util.List;
 
 public class ImovelCategoriaNaoPermitida extends Regra {
 
@@ -630,9 +616,6 @@ public class ImovelCategoriaNaoPermitida extends Regra {
 
 ```
 ```java
-package com.carteira.performance.Model;
-
-import java.util.List;
 
 public class ImovelValido extends Regra {
 
