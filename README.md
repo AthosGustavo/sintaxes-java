@@ -766,6 +766,125 @@ public class ImovelValido extends Regra {
   ## Sistema de monitoramento de bitcoin
    - Para exemplificar o uso do padrão, poderiamos imaginar um sistema de monitoramento de bitcoin em escala menor que com base na variação do seu valor é necessários registrar um log e notificar os investidores.
   
+  ```java
+  public interface BitCoinObserver {	
+	public void notificacao();
+  }
+  ```
+  ```java
+	public class Bitcoin {
+		
+		private BigDecimal preco;
+		private List<BitCoinObserver> observadores;
+		
+		
+		public Bitcoin(List<BitCoinObserver> observadores, BigDecimal preco) {
+			this.preco = preco;
+			this.observadores = observadores;
+		}
+		
+		public void notificar() {
+			
+			//Ex: se o preço atual for 5% maior que o preço anterior, notifica os obetos
+			if() {
+				observadores.forEach(obs -> {obs.notificacao();});
+			}
+			
+		}
+	
+		public BigDecimal getPreco() {
+			return preco;
+		}
+	
+	
+		public void setPreco(BigDecimal preco) {
+			this.preco = preco;
+		}
+		
+		
+	
+	}
+
+  ```
+  ```java
+	public class BitcoinEstadoLog implements BitCoinObserver{
+	
+		
+		private BigDecimal preco;
+		private Date data;
+		
+		@Override
+		public void notificacao() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		public BitcoinEstadoLog() {
+			
+		}
+		public BigDecimal getPreco() {
+			return preco;
+		}
+		public void setPreco(BigDecimal preco) {
+			this.preco = preco;
+		}
+		public Date getData() {
+			return data;
+		}
+		public void setData(Date data) {
+			this.data = data;
+		}
+	
+		
+		
+	}
+
+  ```
+  ```java
+	public class BitcoinNotificao implements BitCoinObserver{
+		
+		private String nomeCliente;
+		private BigDecimal precoBitcoin;
+		
+		
+		public BitcoinNotificao(String nomeCliente,BigDecimal precoBitcoin) {
+			this.nomeCliente = nomeCliente;
+			this.precoBitcoin = precoBitcoin;;
+		}
+		
+		public String msgNotificacao() {		
+			return "Olá " + this.nomeCliente + "estou passando para avisar que o preço do bitcoin neste momento é " + this.precoBitcoin.toString();	
+		}
+		
+	
+		@Override
+		public void notificacao() {
+			// TODO Auto-generated method stub
+			
+		}
+	
+		public String getNomeCliente() {
+			return nomeCliente;
+		}
+		public void setNomeCliente(String nomeCliente) {
+			this.nomeCliente = nomeCliente;
+		}
+	
+		public BigDecimal getPrecoBitcoin() {
+			return precoBitcoin;
+		}
+	
+		public void setPrecoBitcoin(BigDecimal precoBitcoin) {
+			this.precoBitcoin = precoBitcoin;
+		}
+	
+		
+		
+		
+	}
+
+  ```
+ 
  </details>
 
 </details>
