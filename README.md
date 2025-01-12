@@ -757,6 +757,15 @@ public class ImovelValido extends Regra {
 
  <details>
   <summary>Observer</summary>
+
+  # Observer
+
+   - O padrão Observer é implementado em situações onde a mudança de estado de um objeto interessa a outros objetos,os observadores.
+   - Geralmente podemos ver a necessidade de usar o padrão em algorítmos em que logo após o recebimento de um objeto seja por parâmetro de um método ou por uma requisição vários if são declarados para mudar o estado de um terceiro objeto ou acionar algum comportamento com base na mudança do objeto principal.
+
+  ## Sistema de monitoramento de bitcoin
+   - Para exemplificar o uso do padrão, poderiamos imaginar um sistema de monitoramento de bitcoin em escala menor que com base na variação do seu valor é necessários registrar um log e notificar os investidores.
+  
  </details>
 
 </details>
