@@ -751,7 +751,13 @@ public class ImovelValido extends Regra {
    ```
  
  </details>
+ <details>
+  <summary>Template Method</summary>
+ </details>
 
+ <details>
+  <summary>Observer</summary>
+ </details>
 
 </details>
 
